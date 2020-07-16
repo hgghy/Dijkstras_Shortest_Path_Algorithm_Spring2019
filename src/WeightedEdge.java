@@ -22,7 +22,26 @@ public class WeightedEdge
 			return new WeightedEdge(vertex1, vertex2, weight);
 		} catch (Exception e)
 		{
-			// unreachable, but java made me do it.
+			// unreachable, since the new edge is a clone of a legal edge and thus cannot throw an exception, but java made me do it.
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	// reverses the order of the vertices if a negative number is passed in
+	// used by some methods that need a directional edge for simplicity
+	public WeightedEdge clone(int direction)
+	{
+		try
+		{
+			if(direction < 0)
+				return new WeightedEdge(vertex2, vertex1, weight);
+			
+			return clone();
+			
+		} catch (Exception e)
+		{
+			// unreachable, since the new edge is a clone of a legal edge and thus cannot throw an exception, but java made me do it.
 			e.printStackTrace();
 			return null;
 		}
